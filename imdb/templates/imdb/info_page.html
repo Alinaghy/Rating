@@ -1,0 +1,41 @@
+{% extends "imdb/layout.html" %}
+
+{% block head %}
+
+<style>
+    #t-info-content{
+        width: 70%;
+    }
+    #read-more{
+        color: #ffc107;
+        font-size: small;
+    }
+    #read-more:hover{
+        text-decoration: underline;
+    }
+    #d-read{
+        margin-top: 10px;
+        width: fit-content;
+    }
+
+</style>
+
+{% endblock %}
+
+{% block body %}
+
+
+<div class="all-div-info">
+    <img src="{{ Person.image }}" id="image-info">
+    <div id="content-info">
+    <div id="t-name">{{ Person.name }}</div>
+    <div id="t-info">Info : </div>
+    <div id="t-info-content">{{ Person.info }}</div>
+    <div id="d-read"><a id="read-more" href="https://www.imdb.com">Based on IMDb</a></div>
+
+</div>
+
+
+
+
+{% endblock %}

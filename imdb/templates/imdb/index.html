@@ -1,0 +1,80 @@
+{% extends "imdb/layout.html" %}
+{% load static %}
+
+{% block head %}
+{% endblock %}
+
+{% block body %}
+<div id="a-nothing">
+<div id="trend">
+    <img src="{{ Trend.movie.image }}"  class="img-trend" alt="...">
+    <div id="info-t">
+    <div id="t-name">{{ Trend.movie.name }}</div>
+    <div id="t-r">
+        <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" fill="#ffc107" class="bi bi-star-fill" viewBox="0 0 16 16">
+            <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
+        </svg>
+        <p id="t-rate-num">{{ Trend.movie.result_rate|floatformat:1 }}</p>
+    </div>
+    <div class="s-gener">
+        <p class="gener">{{ Trend.movie.gener|title }}</p>
+    </div>
+    <div id="t-director"> <div id="D-S">Director : </div> <a href="{% url 'info_page' Trend.movie.director %}" class="dic-name">{{ Trend.movie.director }}</a></div>
+    <div id="t-actor">Actors : </div>
+    {% for act in Trend.movie.actors.all %}
+    <div class="act"><a href="{% url 'info_page' act %}" class="dic-name">{{ act }}, </a></div>
+    {% endfor %}
+    <div id="t-info">Info : </div>
+    <div id="t-info-content">{{ Trend.movie.info }}</div>
+    <div id="t-you">
+    <a href="{{ Trend.movie.trailer }}"><button class="btn btn-sm btn-outline-warning" id="t-trailer-b">Watch trailer on youtube</button></a>
+    <svg id="youtube-svg" xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="rgb(214, 4, 4)" class="bi bi-youtube" viewBox="0 0 16 16">
+        <path d="M8.051 1.999h.089c.822.003 4.987.033 6.11.335a2.01 2.01 0 0 1 1.415 1.42c.101.38.172.883.22 1.402l.01.104.022.26.008.104c.065.914.073 1.77.074 1.957v.075c-.001.194-.01 1.108-.082 2.06l-.008.105-.009.104c-.05.572-.124 1.14-.235 1.558a2.007 2.007 0 0 1-1.415 1.42c-1.16.312-5.569.334-6.18.335h-.142c-.309 0-1.587-.006-2.927-.052l-.17-.006-.087-.004-.171-.007-.171-.007c-1.11-.049-2.167-.128-2.654-.26a2.007 2.007 0 0 1-1.415-1.419c-.111-.417-.185-.986-.235-1.558L.09 9.82l-.008-.104A31.4 31.4 0 0 1 0 7.68v-.123c.002-.215.01-.958.064-1.778l.007-.103.003-.052.008-.104.022-.26.01-.104c.048-.519.119-1.023.22-1.402a2.007 2.007 0 0 1 1.415-1.42c.487-.13 1.544-.21 2.654-.26l.17-.007.172-.006.086-.003.171-.007A99.788 99.788 0 0 1 7.858 2h.193zM6.4 5.209v4.818l4.157-2.408L6.4 5.209z"/>
+    </svg>
+    </div>
+    </div>
+
+</div>
+<div id="nothing">
+    <img src="{{ Trend1.movie.image }}" id="t1-img">
+    <div id="t-r">
+        <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" fill="#ffc107" class="bi bi-star-fill" viewBox="0 0 16 16">
+            <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
+        </svg>
+        <p id="t-rate-num">{{ Trend1.movie.result_rate|floatformat:1 }}</p>
+    </div>
+</div>
+</div>
+
+<div class="all">
+<div id="top"><h2>Top Movies</h2></div>
+<h5><span id="h5-r">RATING</span> top 5 movies by voters</h5>
+{% for movie in Movies %}
+<a href="{% url 'movie_page' movie.name %}">
+<div class="for">
+<div class="image">
+<img src="{{ movie.image }}"  class="photo" alt="...">
+</div>
+<div id="r">
+<svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" fill="#ffc107" class="bi bi-star-fill" viewBox="0 0 16 16">
+    <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
+</svg>
+<p id="rate-num">{{ movie.result_rate|floatformat:1 }}</p>
+</div>
+<p class="name">{{ movie.name }}</p>
+</a>
+<a href="{{ movie.trailer }}"><button class="btn btn-sm btn-outline-secondary" id="tra">Trailer on youtube</button></a>
+<a href="{% url 'movie_page' movie.name %}"  class="info-svg">
+<svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="rgba(255, 255, 255, 0.774)" class="bi bi-info-circle" viewBox="0 0 16 16">
+    <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+    <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"/>
+</svg>
+</a>
+</div>
+
+{% endfor %}
+</div>
+
+
+
+{% endblock %}
