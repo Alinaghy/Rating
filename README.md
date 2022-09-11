@@ -6,16 +6,16 @@ Users can find out their favorite movies, watch trailers and create their own wa
 Even they can recommend them to the others and leave comments
 
 ## Models.py
-User : same as previous projects in this class we save users information in database \
-Actors : here we save actors name, information and image url \ 
-Directors : here we save directors name, information and image url \
+User : same as previous projects in this class we save users information in database <br/>
+Actors : here we save actors name, information and image url <br/> 
+Directors : here we save directors name, information and image url <br/>
 Movies : in this class we try to save name, information, trailer url, image url, gener, 
 rate (sum of all rates) , rate_num (number of raters), rate_user (users who have rated)
-rate_resualt ( rate / rate_num ), also there are ForeignKeys to Actors & Directors class \
+rate_resualt ( rate / rate_num ), also there are ForeignKeys to Actors & Directors class <br/>
 Trend : there is a ForeignKey to Movies to saving trend and hot movies uptodate\
-### so far we can add or update these data only by superuser (admin) \
-Watchlist : by this class we can add or remove movies to the user watchlist \
-Comment : users' comments include (user, movie, comment, timestampe) come to this class and they'll be saved in database \
+### so far we can add or update these data only by superuser (admin) <br/>
+Watchlist : by this class we can add or remove movies to the user watchlist <br/>
+Comment : users' comments include (user, movie, comment, timestampe) come to this class and they'll be saved in database <br/>
 
 ## Urls.py 
 Here we have a default route called index , ( login, logout, register ) for users, movie_page to show movies details, watchlist to update users watchlists, user-watchlist to show user watchlist, 
