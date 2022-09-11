@@ -12,7 +12,7 @@ Directors : here we save directors name, information and image url <br/>
 Movies : in this class we try to save name, information, trailer url, image url, gener, 
 rate (sum of all rates) , rate_num (number of raters), rate_user (users who have rated)
 rate_resualt ( rate / rate_num ), also there are ForeignKeys to Actors & Directors class <br/>
-Trend : there is a ForeignKey to Movies to saving trend and hot movies uptodate\
+Trend : there is a ForeignKey to Movies to saving trend and hot movies uptodate
 ### so far we can add or update these data only by superuser (admin) <br/>
 Watchlist : by this class we can add or remove movies to the user watchlist <br/>
 Comment : users' comments include (user, movie, comment, timestampe) come to this class and they'll be saved in database <br/>
